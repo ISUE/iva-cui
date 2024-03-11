@@ -1,7 +1,9 @@
 {
   "dependencies": {
+    "com.unity.cinemachine": "2.9.5",
     "com.unity.collab-proxy": "2.2.0",
     "com.unity.feature.development": "1.0.1",
+    "com.unity.inputsystem": "1.7.0",
     "com.unity.render-pipelines.universal": "14.0.9",
     "com.unity.shadergraph": "14.0.9",
     "com.unity.textmeshpro": "3.0.6",
@@ -13,6 +15,7 @@
     "com.unity.xr.interaction.toolkit": "2.5.2",
     "com.unity.xr.management": "4.4.1",
     "com.unity.xr.openxr": "1.9.1",
+    "com.whisper.unity": "https://github.com/Macoron/whisper.unity.git?path=/Packages/com.whisper.unity",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
