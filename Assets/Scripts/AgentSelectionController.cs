@@ -1,22 +1,47 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AgentSelectionController : MonoBehaviour
+namespace LLMAgents
 {
-    public List<ActivateZone> zones;
-
-    public string GetActivatedZone()
+    public enum AgentType
     {
-        // loop through all zones and return the first activated zone by string
-        foreach (ActivateZone zone in zones)
+        Friend, Clerk, Manager, None
+    }
+
+    public class AgentSelectionController : MonoBehaviour
+    {
+        public List<ActivationZone> zones;
+
+        public static ActivationZone currentZone;
+
+        private static List<ActivationZone> activeZones;
+
+        private void Awake()
         {
-            if (zone.GetIsActivated)
+            activeZones = new List<ActivationZone>();
+            activeZones.AddRange(zones);
+        }
+
+        public static void PlayAudioForAgent(AgentType agentType, AudioClip audioClip)
+        {
+            foreach (ActivationZone zone in activeZones)
             {
-                return zone.GetZoneName();
+                if (zone.GetZoneAgentType() == agentType)
+                {
+                    zone.PlayAudio(audioClip);
+                    return;
+                }
             }
         }
 
-        return "None";
+        public AgentType GetActiveAgentType()
+        {
+            // loop through all zones and return the first activated zone by string
+            foreach (ActivationZone zone in zones)
+                if (zone.GetIsActivated)
+                    return zone.GetZoneAgentType();
+
+            return AgentType.None;
+        }
     }
 }
