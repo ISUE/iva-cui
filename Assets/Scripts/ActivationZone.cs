@@ -16,6 +16,9 @@ public class ActivationZone : MonoBehaviour
     [SerializeField] private AgentType agentType;
     [SerializeField] private Transform agentAvatar;
     [SerializeField] private AudioSource audioSource;
+    public FourStageAvatarStatusIndicator avatarStatusIndicator;
+
+    [SerializeField] private Canvas thinkingCanvas;
 
     public AgentType GetZoneAgentType()
     {
@@ -25,6 +28,8 @@ public class ActivationZone : MonoBehaviour
     private void Start()
     {
         parentZone = transform.parent;
+        avatarStatusIndicator?.SetStatus(FourStageAvatarStatusIndicator.Status.Idle);
+        SetThinkingStatus(false);
     }
 
     private void Update()
@@ -38,6 +43,7 @@ public class ActivationZone : MonoBehaviour
         parentZone.GetComponent<Renderer>().material = activated;
         isActivated = true;
         AgentSelectionController.currentZone = this;
+        LookAtPlayer();
     }
 
     private void OnTriggerExit(Collider other)
@@ -49,10 +55,29 @@ public class ActivationZone : MonoBehaviour
         AgentSelectionController.currentZone = null;
     }
 
+    public void SetThinkingStatus(bool val)
+    {
+        thinkingCanvas.gameObject.SetActive(val);
+    }
+
     public void PlayAudio(AudioClip audioClip)
     {
         audioSource.clip = audioClip;
         audioSource.Play();
+
+        SetThinkingStatus(false);
+        avatarStatusIndicator?.SetStatus(FourStageAvatarStatusIndicator.Status.Speaking);
+        LookAtPlayer();
+
+        float clipLength = audioClip.length;
+        StartCoroutine(SetAgentBackToIdleAndLookAtPlayer(clipLength));
+    }
+
+    private IEnumerator SetAgentBackToIdleAndLookAtPlayer(float clipLength)
+    {
+        yield return new WaitForSeconds(clipLength);
+        LookAtPlayer();
+        avatarStatusIndicator?.SetStatus(FourStageAvatarStatusIndicator.Status.Idle);
     }
 
     public void LookAtPlayer()
