@@ -53,10 +53,12 @@ public class ServerInterface : MonoBehaviour
             else
             {
                 Debug.Log($"Received: {webRequest.downloadHandler.text}");
-                (string audioPath, string message) = ExtractInfoFromResponse(webRequest.downloadHandler.text);
+                (string audioPath, string message, string transition) = ExtractInfoFromResponse(webRequest.downloadHandler.text);
                 //print(audioPath);
                 string audioFileUrl = $"http://{ip_colon_port}/{audioPath}";
                 //Debug.Log($"Message: {message}");
+                print($"Transition: {transition}");
+                StudyTaskUI.AddTask(transition);
                 StartCoroutine(DownloadAndPlayAudio(agentType, audioFileUrl));
             }
         }
@@ -87,12 +89,13 @@ public class ServerInterface : MonoBehaviour
     {
         public string message;
         public string audio;
+        public string transition;
     }
 
     // Function to extract the audio URL and the message from the server response
-    private (string audioPath, string message) ExtractInfoFromResponse(string response)
+    private (string audioPath, string message, string transition) ExtractInfoFromResponse(string response)
     {
         SpeechResponse speechResponse = JsonUtility.FromJson<SpeechResponse>(response);
-        return (speechResponse.audio, speechResponse.message);
+        return (speechResponse.audio, speechResponse.message, speechResponse.transition);
     }
 }
