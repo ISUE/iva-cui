@@ -22,13 +22,13 @@ namespace LLMAgents
             activeZones.AddRange(zones);
         }
 
-        public static void PlayAudioForAgent(AgentType agentType, AudioClip audioClip)
+        public static void PlayAudioForAgent(AgentType agentType, AudioClip audioClip, string transition)
         {
             foreach (ActivationZone zone in activeZones)
             {
                 if (zone.GetZoneAgentType() == agentType)
                 {
-                    zone.PlayAudio(audioClip);
+                    zone.PlayAudio(audioClip, transition);
                     return;
                 }
             }

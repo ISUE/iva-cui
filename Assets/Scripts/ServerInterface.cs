@@ -1,7 +1,7 @@
+using LLMAgents;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
-using LLMAgents;
 
 public class ServerInterface : MonoBehaviour
 {
@@ -57,14 +57,15 @@ public class ServerInterface : MonoBehaviour
                 //print(audioPath);
                 string audioFileUrl = $"http://{ip_colon_port}/{audioPath}";
                 //Debug.Log($"Message: {message}");
+                UserStudyControls.latestInteractionData.agentResponse = message;
                 print($"Transition: {transition}");
-                StudyTaskUI.AddTask(transition);
-                StartCoroutine(DownloadAndPlayAudio(agentType, audioFileUrl));
+
+                StartCoroutine(DownloadAndPlayAudio(agentType, audioFileUrl, transition));
             }
         }
     }
 
-    private IEnumerator DownloadAndPlayAudio(AgentType agent, string audioUrl)
+    private IEnumerator DownloadAndPlayAudio(AgentType agent, string audioUrl, string transition)
     {
         using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(audioUrl, AudioType.MPEG))
         {
@@ -73,13 +74,16 @@ public class ServerInterface : MonoBehaviour
             if (www.result == UnityWebRequest.Result.Success)
             {
                 AudioClip clip = DownloadHandlerAudioClip.GetContent(www);
-                AgentSelectionController.PlayAudioForAgent(agent, clip);
+                AgentSelectionController.PlayAudioForAgent(agent, clip, transition);
             }
             else
             {
                 Debug.LogError($"Failed to download audio clip: {www.error}");
             }
         }
+        UserStudyControls.latestInteractionData.timeOfFeedbackPlay = Time.time;
+        UserStudyControls.StopTrackingAverageAngle("Thinking");
+        UserStudyControls.StartTrackingAverageAngle(AgentSelectionController.currentZone.GetAgentAvatar());
         float timeAsOfAudioPlay = Time.time;
         print($"Total time since button press: {timeAsOfAudioPlay - MicrophoneWithTTS.timeAsOfButtonPress}");
     }

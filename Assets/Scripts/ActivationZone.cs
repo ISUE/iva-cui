@@ -20,6 +20,11 @@ public class ActivationZone : MonoBehaviour
 
     [SerializeField] private Canvas thinkingCanvas;
 
+    public Transform GetAgentAvatar()
+    {
+        return agentAvatar;
+    }
+
     public AgentType GetZoneAgentType()
     {
         return agentType;
@@ -60,22 +65,26 @@ public class ActivationZone : MonoBehaviour
         thinkingCanvas.gameObject.SetActive(val);
     }
 
-    public void PlayAudio(AudioClip audioClip)
+    public void PlayAudio(AudioClip audioClip, string transition)
     {
         audioSource.clip = audioClip;
-        audioSource.Play();
+        audioSource.Play(); 
 
         SetThinkingStatus(false);
         avatarStatusIndicator?.SetStatus(FourStageAvatarStatusIndicator.Status.Speaking);
         LookAtPlayer();
 
         float clipLength = audioClip.length;
-        StartCoroutine(SetAgentBackToIdleAndLookAtPlayer(clipLength));
+        StartCoroutine(SetAgentBackToIdleAndLookAtPlayer(clipLength, transition));
     }
 
-    private IEnumerator SetAgentBackToIdleAndLookAtPlayer(float clipLength)
+    private IEnumerator SetAgentBackToIdleAndLookAtPlayer(float clipLength, string transition)
     {
         yield return new WaitForSeconds(clipLength);
+        UserStudyControls.latestInteractionData.timeOfFeedbackFinish = Time.time;
+        UserStudyControls.StopTrackingAverageAngle("Speaking");
+        UserStudyControls.SaveInteractionData();
+        StudyTaskUI.AddTask(transition);
         LookAtPlayer();
         avatarStatusIndicator?.SetStatus(FourStageAvatarStatusIndicator.Status.Idle);
     }
