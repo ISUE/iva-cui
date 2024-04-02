@@ -20,6 +20,8 @@ public class ActivationZone : MonoBehaviour
 
     [SerializeField] private Canvas thinkingCanvas;
 
+    public bool AvatarCurrentlySpeaking => audioSource.isPlaying;
+
     public Transform GetAgentAvatar()
     {
         return agentAvatar;
