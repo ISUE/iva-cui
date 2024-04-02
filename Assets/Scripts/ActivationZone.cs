@@ -62,6 +62,9 @@ public class ActivationZone : MonoBehaviour
 
     public void SetThinkingStatus(bool val)
     {
+        if (UserStudyControls.GetUserStudyType() != UserStudyType.LoadingFeedback)
+            return;
+
         thinkingCanvas.gameObject.SetActive(val);
     }
 
