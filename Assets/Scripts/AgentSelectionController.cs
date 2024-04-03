@@ -13,6 +13,7 @@ namespace LLMAgents
         public List<ActivationZone> zones;
 
         public static ActivationZone currentZone;
+        public static ActivationZone lastZone;
 
         private static List<ActivationZone> activeZones;
 
@@ -42,6 +43,15 @@ namespace LLMAgents
                     return zone.GetZoneAgentType();
 
             return AgentType.None;
+        }
+
+        public static bool SomeoneIsSpeaking()
+        {
+            foreach (ActivationZone zone in activeZones)
+                if (zone.AvatarCurrentlySpeaking)
+                    return true;
+
+            return false;
         }
     }
 }

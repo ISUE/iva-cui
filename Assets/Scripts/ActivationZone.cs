@@ -50,6 +50,7 @@ public class ActivationZone : MonoBehaviour
         parentZone.GetComponent<Renderer>().material = activated;
         isActivated = true;
         AgentSelectionController.currentZone = this;
+        AgentSelectionController.lastZone = AgentSelectionController.currentZone;
         LookAtPlayer();
     }
 

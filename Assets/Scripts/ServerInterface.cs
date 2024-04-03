@@ -75,6 +75,7 @@ public class ServerInterface : MonoBehaviour
             {
                 AudioClip clip = DownloadHandlerAudioClip.GetContent(www);
                 AgentSelectionController.PlayAudioForAgent(agent, clip, transition);
+                MicrophoneWithTTS.someoneIsThinking = false;
             }
             else
             {
@@ -83,7 +84,7 @@ public class ServerInterface : MonoBehaviour
         }
         UserStudyControls.latestInteractionData.timeOfFeedbackPlay = Time.time;
         UserStudyControls.StopTrackingAverageAngle("Thinking");
-        UserStudyControls.StartTrackingAverageAngle(AgentSelectionController.currentZone.GetAgentAvatar());
+        UserStudyControls.StartTrackingAverageAngle(AgentSelectionController.lastZone.GetAgentAvatar());
         float timeAsOfAudioPlay = Time.time;
         print($"Total time since button press: {timeAsOfAudioPlay - MicrophoneWithTTS.timeAsOfButtonPress}");
     }
