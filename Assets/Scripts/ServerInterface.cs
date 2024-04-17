@@ -38,7 +38,7 @@ public class ServerInterface : MonoBehaviour
 
         // URL encode the text
         string encodedText = UnityWebRequest.EscapeURL(text);
-        string url = $"http://{ip_colon_port}/speak_{agentTypeString}/?q={encodedText}";
+        string url = $"http://{ip_colon_port}/speak/{agentTypeString}/?q={encodedText}";
 
         print($"Sending a request to middleware server");
 
