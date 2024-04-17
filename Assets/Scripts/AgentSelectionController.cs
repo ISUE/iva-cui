@@ -5,7 +5,7 @@ namespace LLMAgents
 {
     public enum AgentType
     {
-        Friend, Clerk, Manager, None
+        Friend, Clerk, Manager, Open, None
     }
 
     public class AgentSelectionController : MonoBehaviour
