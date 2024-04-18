@@ -49,6 +49,7 @@ public class ServerInterface : MonoBehaviour
             if (webRequest.result != UnityWebRequest.Result.Success)
             {
                 Debug.Log($"Error: {webRequest.error}");
+                // TODO FIXME reset the status back to idle
             }
             else
             {
