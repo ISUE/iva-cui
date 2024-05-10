@@ -6,6 +6,7 @@
     "com.unity.feature.development": "1.0.1",
     "com.unity.inputsystem": "1.7.0",
     "com.unity.meshopt.decompress": "0.1.0-preview.5",
+    "com.unity.probuilder": "5.2.2",
     "com.unity.render-pipelines.universal": "14.0.10",
     "com.unity.shadergraph": "14.0.10",
     "com.unity.textmeshpro": "3.0.6",
