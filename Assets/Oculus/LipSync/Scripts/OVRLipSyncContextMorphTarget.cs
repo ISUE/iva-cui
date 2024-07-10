@@ -35,9 +35,13 @@ public class OVRLipSyncContextMorphTarget : MonoBehaviour
     [Tooltip("Blendshape index to trigger for each viseme.")]
     public int [] visemeToBlendTargets = Enumerable.Range(0, OVRLipSync.VisemeCount).ToArray();
 
+    // factor for scale viseme to model blendshape scale
+    public int visemeKeyScale = 100;
+
     // enable/disable sending signals to viseme engine
     [Tooltip("Enable using the test keys defined below to manually trigger each viseme.")]
     public bool enableVisemeTestKeys = false;
+
     [Tooltip("Test keys used to manually trigger an individual viseme - by " +
         "default the QWERTY row of a US keyboard.")]
     public KeyCode[] visemeTestKeys =
@@ -147,7 +151,7 @@ public class OVRLipSyncContextMorphTarget : MonoBehaviour
         {
             for (int i = 0; i < OVRLipSync.VisemeCount; ++i)
             {
-                CheckVisemeKey(visemeTestKeys[i], i, 1);
+                CheckVisemeKey(visemeTestKeys[i], i, visemeKeyScale);
             }
         }
 
@@ -166,7 +170,7 @@ public class OVRLipSyncContextMorphTarget : MonoBehaviour
                 // Viseme blend weights are in range of 0->1.0, we need to make range 100
                 skinnedMeshRenderer.SetBlendShapeWeight(
                     visemeToBlendTargets[i],
-                    frame.Visemes[i] * 1.0f);
+                    frame.Visemes[i] * visemeKeyScale);
             }
         }
     }
@@ -188,7 +192,7 @@ public class OVRLipSyncContextMorphTarget : MonoBehaviour
 
             skinnedMeshRenderer.SetBlendShapeWeight(
                 laughterBlendTarget,
-                laughterScore * 1.0f);
+                laughterScore * visemeKeyScale);
         }
     }
 
@@ -217,7 +221,7 @@ public class OVRLipSyncContextMorphTarget : MonoBehaviour
     {
         if (Input.GetKeyDown(laughterKey))
         {
-            lipsyncContext.SetLaughterBlend(1);
+            lipsyncContext.SetLaughterBlend(visemeKeyScale);
         }
         if (Input.GetKeyUp(laughterKey))
         {
