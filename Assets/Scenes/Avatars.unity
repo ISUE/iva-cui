@@ -633,7 +633,7 @@ Transform:
   m_GameObject: {fileID: 290800235}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.016, y: 1.588, z: -0.8845}
+  m_LocalPosition: {x: 0, y: 1.588, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1295,6 +1295,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ticket_booth
       objectReference: {fileID: 0}
+    - target: {fileID: -6689036041284674117, guid: c558caf84469f1940abdc1a984c737ab, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -5264791558893029457, guid: c558caf84469f1940abdc1a984c737ab, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1736,7 +1740,7 @@ Transform:
   m_GameObject: {fileID: 658640432}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.016, y: 1.588, z: -0.8845}
+  m_LocalPosition: {x: 0, y: 1.663, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2933,13 +2937,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226818162}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.539032, y: 0.7323328, z: -9.800714}
+  m_LocalRotation: {x: -0, y: 0.76463026, z: -0, w: 0.64446926}
+  m_LocalPosition: {x: -13.660628, y: 1.062, z: -0.35875237}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 327133039}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 99.199, z: 0}
 --- !u!114 &1226818164
 MonoBehaviour:
   m_ObjectHideFlags: 0
