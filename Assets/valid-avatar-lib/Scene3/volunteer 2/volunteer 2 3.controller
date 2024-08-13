@@ -74,7 +74,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: dc2638fb6116ee04eb225f95d451b9f7, type: 2}
+  m_Motion: {fileID: 7400000, guid: 3d49dc2304f316e4aa806b8fe36065e9, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -171,7 +171,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: tablet
+  m_Name: bored-dizzy
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -185,7 +185,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 05fb1cfdafdb845478deced4d58e2d37, type: 2}
+  m_Motion: {fileID: 7400000, guid: 557be625f39445c4daf5f4d55fe3a58a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
