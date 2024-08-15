@@ -6682,6 +6682,11 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 64f90cf0d6b4b2b41a8bfb831420bfd5, type: 3}
   m_PrefabInstance: {fileID: 379452899}
   m_PrefabAsset: {fileID: 0}
+--- !u!137 &379452902 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4513948811318701907, guid: 64f90cf0d6b4b2b41a8bfb831420bfd5, type: 3}
+  m_PrefabInstance: {fileID: 379452899}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &380275975
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18352,6 +18357,7 @@ GameObject:
   - component: {fileID: 912646912}
   - component: {fileID: 912646911}
   - component: {fileID: 912646910}
+  - component: {fileID: 912646913}
   m_Layer: 0
   m_Name: OculusLipSync
   m_TagString: Untagged
@@ -18387,7 +18393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinnedMeshRenderer: {fileID: 1608956820}
-  visemeToBlendTargets: 29000000090000000700000003000000030000000c000000090000000800000005000000040000000000000002000000030000000400000005000000
+  visemeToBlendTargets: ffffffff0a0000000700000007000000060000000c000000090000000600000009000000070000000000000002000000030000000400000005000000
   visemeKeyScale: 100
   enableVisemeTestKeys: 0
   visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
@@ -18518,6 +18524,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &912646913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912646908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinnedMeshRenderer: {fileID: 379452902}
+  visemeToBlendTargets: ffffffff1600000013000000130000001200000018000000150000001200000015000000130000000c0000000e0000000f0000001000000011000000
+  visemeKeyScale: 100
+  enableVisemeTestKeys: 0
+  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
+  laughterKey: 301
+  laughterBlendTarget: 15
+  laughterThreshold: 0.5
+  laughterMultiplier: 1.5
+  smoothAmount: 70
 --- !u!1001 &916893059
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18649,6 +18677,11 @@ AimConstraint:
   m_Active: 1
   m_IsLocked: 0
   m_Sources: []
+--- !u!137 &916893064 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4513948811318701907, guid: c2e297de3c4a0bb43869973af9391561, type: 3}
+  m_PrefabInstance: {fileID: 916893059}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &927948018 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2774220344278030320, guid: c1daeb200d0bcc7488c0efdb4f7a9daa, type: 3}
@@ -20882,6 +20915,7 @@ GameObject:
   - component: {fileID: 1067651196}
   - component: {fileID: 1067651195}
   - component: {fileID: 1067651194}
+  - component: {fileID: 1067651197}
   m_Layer: 0
   m_Name: OculusLipSync
   m_TagString: Untagged
@@ -20917,7 +20951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinnedMeshRenderer: {fileID: 1373686331}
-  visemeToBlendTargets: 29000000090000000700000003000000030000000c000000090000000800000005000000040000000000000002000000030000000400000005000000
+  visemeToBlendTargets: ffffffff0a0000000700000007000000060000000c000000090000000600000009000000070000000000000002000000030000000400000005000000
   visemeKeyScale: 100
   enableVisemeTestKeys: 0
   visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
@@ -21048,6 +21082,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1067651197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067651192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinnedMeshRenderer: {fileID: 1494760836}
+  visemeToBlendTargets: ffffffff1600000013000000130000001200000018000000150000001200000015000000130000000c0000000e0000000f0000001000000011000000
+  visemeKeyScale: 100
+  enableVisemeTestKeys: 0
+  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
+  laughterKey: 301
+  laughterBlendTarget: 15
+  laughterThreshold: 0.5
+  laughterMultiplier: 1.5
+  smoothAmount: 70
 --- !u!1 &1071306200
 GameObject:
   m_ObjectHideFlags: 0
@@ -23890,6 +23946,7 @@ GameObject:
   - component: {fileID: 1166569392}
   - component: {fileID: 1166569391}
   - component: {fileID: 1166569390}
+  - component: {fileID: 1166569393}
   m_Layer: 0
   m_Name: OculusLipSync
   m_TagString: Untagged
@@ -23925,7 +23982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinnedMeshRenderer: {fileID: 1318908618}
-  visemeToBlendTargets: 29000000090000000700000003000000030000000c000000090000000800000005000000040000000000000002000000030000000400000005000000
+  visemeToBlendTargets: ffffffff0a0000000700000007000000060000000c000000090000000600000009000000070000000000000002000000030000000400000005000000
   visemeKeyScale: 100
   enableVisemeTestKeys: 0
   visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
@@ -24056,6 +24113,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1166569393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166569388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b97b38f2f1fd24185315141a6c6a56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinnedMeshRenderer: {fileID: 916893064}
+  visemeToBlendTargets: ffffffff1600000013000000130000001200000018000000150000001200000015000000130000000c0000000e0000000f0000001000000011000000
+  visemeKeyScale: 100
+  enableVisemeTestKeys: 0
+  visemeTestKeys: 600000000900000071000000770000006500000072000000740000007900000075000000690000006f000000700000005b0000005d0000005c000000
+  laughterKey: 301
+  laughterBlendTarget: 15
+  laughterThreshold: 0.5
+  laughterMultiplier: 1.5
+  smoothAmount: 70
 --- !u!1 &1166897979
 GameObject:
   m_ObjectHideFlags: 0
@@ -33459,6 +33538,11 @@ AimConstraint:
   m_Active: 1
   m_IsLocked: 0
   m_Sources: []
+--- !u!137 &1494760836 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4513948811318701907, guid: 9d7c3bf9117ab8945935abcf8c6689f1, type: 3}
+  m_PrefabInstance: {fileID: 1494760832}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1507358499
 PrefabInstance:
   m_ObjectHideFlags: 0
