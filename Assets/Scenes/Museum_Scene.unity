@@ -45364,6 +45364,7 @@ MonoBehaviour:
   micUnavailableSound: {fileID: 8300000, guid: 7f999dfb3c0632d47b1b10b7add0436c, type: 3}
   micOnSound: {fileID: 8300000, guid: 88d9ee016451c4944b25bc8b745b120e, type: 3}
   micOffSound: {fileID: 8300000, guid: 172600c5fa66a794e986e7e275e286a5, type: 3}
+  newTaskAvailableSound: {fileID: 8300000, guid: a9eb2295040ebb3498ff9f27a968d232, type: 3}
 --- !u!114 &2076941224
 MonoBehaviour:
   m_ObjectHideFlags: 0
