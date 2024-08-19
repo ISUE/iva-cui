@@ -78,3 +78,5 @@ crashlytics-build.properties
 # WIP loggers and surveys
 /Assets/StreamingAssets/EyeData/*
 /Assets/StreamingAssets/EyeData.meta
+/Assets/StreamingAssets/Surveys/*
+/Assets/StreamingAssets/Surveys.meta
