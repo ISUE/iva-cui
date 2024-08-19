@@ -2085,7 +2085,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f386f0e14b35f924191000c6eee2e412, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2094,7 +2094,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 17.723389
+  MaxDistance: 11
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -10198,7 +10198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8154132499693842063, guid: 15fa9454fff1b8c499998faffe653bd3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17601,7 +17601,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &770886010
 Transform:
   m_ObjectHideFlags: 0
@@ -29588,7 +29588,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0564bf5fdbe55e3468a4180ee2dfcdf4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.7
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -29643,8 +29643,8 @@ AudioSource:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.45454103
-      value: 0.0625
+      time: 0.4524048
+      value: 0.043701172
       inSlope: -0.13755633
       outSlope: -0.13755633
       tangentMode: 0
@@ -29652,8 +29652,17 @@ AudioSource:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
+      time: 0.61580086
+      value: 0.026399165
+      inSlope: -0.07605871
+      outSlope: -0.07605871
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 0.90908206
-      value: 0.03125
+      value: 0.021850586
       inSlope: -0.034389082
       outSlope: -0.034389082
       tangentMode: 0
@@ -36031,7 +36040,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1351441798
 Transform:
   m_ObjectHideFlags: 0
@@ -39981,7 +39990,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.043
+      value: 0.55
       objectReference: {fileID: 0}
     - target: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -57037,7 +57046,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3d3dadc2e6fcc584cb3ade121efa1829, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.7
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -57074,8 +57083,8 @@ AudioSource:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.11363526
-      value: 0.25
+      time: 0.14988251
+      value: 0.32208252
       inSlope: -2.2009013
       outSlope: -2.2009013
       tangentMode: 0
@@ -57083,8 +57092,8 @@ AudioSource:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.22727051
-      value: 0.125
+      time: 0.2571167
+      value: 0.21902466
       inSlope: -0.5502253
       outSlope: -0.5502253
       tangentMode: 0
@@ -57092,14 +57101,23 @@ AudioSource:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.45454103
-      value: 0.0625
+      time: 0.4630707
+      value: 0.13143921
       inSlope: -0.13755633
       outSlope: -0.13755633
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
+    - serializedVersion: 3
+      time: 0.6835566
+      value: 0.043736465
+      inSlope: -0.29354602
+      outSlope: -0.29354602
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.90908206
       value: 0.03125
