@@ -10188,13 +10188,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -1.352
       objectReference: {fileID: 0}
+    - target: {fileID: 4950678230948498579, guid: 15fa9454fff1b8c499998faffe653bd3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.39
+      objectReference: {fileID: 0}
     - target: {fileID: 8154132499693842063, guid: 15fa9454fff1b8c499998faffe653bd3, type: 3}
       propertyPath: m_Name
       value: Agent 3 WaitIndicator
       objectReference: {fileID: 0}
     - target: {fileID: 8154132499693842063, guid: 15fa9454fff1b8c499998faffe653bd3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10230,6 +10234,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: -4237747465885307448, guid: d6709d2327806f1418c5ba24e34c1906, type: 3}
+    - target: {fileID: 1662950552170086787, guid: c558caf84469f1940abdc1a984c737ab, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 561228683780177679, guid: e60c577cf0638e84f94f4a8e456f4636, type: 3}
     - target: {fileID: 2774220344278030320, guid: c558caf84469f1940abdc1a984c737ab, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6153847
