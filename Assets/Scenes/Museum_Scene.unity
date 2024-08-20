@@ -27574,7 +27574,6 @@ MonoBehaviour:
   agentType: 2
   avatarHead: {fileID: 379452900}
   audioSource: {fileID: 912646912}
-  sceneCameraTransform: {fileID: 1188232029}
   animator: {fileID: 379452901}
   thinkingCanvas: {fileID: 663125706}
 --- !u!65 &1109802167
@@ -29942,7 +29941,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1166897980
 Transform:
   m_ObjectHideFlags: 0
@@ -30725,11 +30724,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!4 &1188232029 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5126527961139664760, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
-  m_PrefabInstance: {fileID: 1188232026}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1195261779
 GameObject:
   m_ObjectHideFlags: 0
@@ -41487,7 +41481,6 @@ MonoBehaviour:
   agentType: 1
   avatarHead: {fileID: 1494760833}
   audioSource: {fileID: 1067651196}
-  sceneCameraTransform: {fileID: 1188232029}
   animator: {fileID: 1494760834}
   thinkingCanvas: {fileID: 815030474}
 --- !u!65 &1531551084
@@ -47658,6 +47651,37 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1805352440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1805352441}
+  m_Layer: 0
+  m_Name: LookAtMe
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1805352441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805352440}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1811666489
 GameObject:
   m_ObjectHideFlags: 0
@@ -52920,7 +52944,6 @@ MonoBehaviour:
   agentType: 0
   avatarHead: {fileID: 916893060}
   audioSource: {fileID: 1166569392}
-  sceneCameraTransform: {fileID: 1188232029}
   animator: {fileID: 916893061}
   thinkingCanvas: {fileID: 257148983}
 --- !u!65 &2025653786
@@ -57379,3 +57402,4 @@ SceneRoots:
   - {fileID: 719305556}
   - {fileID: 1596817230}
   - {fileID: 1689122747}
+  - {fileID: 1805352441}
