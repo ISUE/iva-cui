@@ -596,8 +596,8 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: head scratch
-  m_Speed: 0.31
+  m_Name: crossed arms 0
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 6250691414870895954}
@@ -606,12 +606,12 @@ AnimatorState:
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
-  m_Mirror: 1
+  m_Mirror: 0
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 4546a466f19171247a1f859c2dad18eb, type: 2}
+  m_Motion: {fileID: 7400000, guid: 38b9bae7d00a8bf42a05e25213808901, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
