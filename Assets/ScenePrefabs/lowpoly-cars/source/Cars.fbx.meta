@@ -3,7 +3,32 @@ guid: d3ea824f6d2655a449b787ae10d2905d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Audi_Mat
+    second: {fileID: 2100000, guid: c1aabe6198352cf48a0a68c495078cde, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CarParts_Mat
+    second: {fileID: 2100000, guid: 13532ceba0ffda941ac06476940cc5cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dodge_Mat
+    second: {fileID: 2100000, guid: 062727edbf0df3e429638c99c106633b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lambo_Mat
+    second: {fileID: 2100000, guid: b8e65b715bbedaf4892202185f7f4846, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tesla_Mat
+    second: {fileID: 2100000, guid: 3f7e429700b12a7459273ff597e3b155, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
