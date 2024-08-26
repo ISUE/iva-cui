@@ -50939,6 +50939,10 @@ PrefabInstance:
       propertyPath: m_DebounceTime
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2728902658200667494, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_EnableTurnAround
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2819856895474916288, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -70435,7 +70439,7 @@ MonoBehaviour:
   waitIndicatorType: 1
   delayDuration: 2
   doCounterbalancing: 1
-  counterbalanceOrder: 2
+  counterbalanceOrder: 3
   controllerMicButton: {fileID: -2829981993751271479, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!114 &2076941222
 MonoBehaviour:
@@ -70545,7 +70549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be1ca4b4a50000b4db9dcb9778956e40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countDownDuration: 60
+  countDownDuration: 30
 --- !u!114 &2076941228
 MonoBehaviour:
   m_ObjectHideFlags: 0
