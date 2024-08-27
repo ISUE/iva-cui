@@ -51036,8 +51036,20 @@ PrefabInstance:
       value: usercollider
       objectReference: {fileID: 0}
     - target: {fileID: 7690080512698956842, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_DefaultParameters.m_EaseInTime
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690080512698956842, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_DefaultParameters.m_EaseOutTime
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690080512698956842, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_DefaultParameters.m_ApertureSize
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690080512698956842, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_DefaultParameters.m_EaseOutDelayTime
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7696548424635294048, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_TagString
@@ -70439,7 +70451,7 @@ MonoBehaviour:
   waitIndicatorType: 1
   delayDuration: 2
   doCounterbalancing: 1
-  counterbalanceOrder: 5
+  counterbalanceOrder: 6
   controllerMicButton: {fileID: -2829981993751271479, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!114 &2076941222
 MonoBehaviour:
@@ -70521,7 +70533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ip_colon_port: 127.0.0.1:8000
-  whisper_ip_colon_port: http://45.56.116.241:8083/upload/
+  whisper_ip_colon_port: http://192.168.0.15:8083/upload/
 --- !u!4 &2076941226
 Transform:
   m_ObjectHideFlags: 0
