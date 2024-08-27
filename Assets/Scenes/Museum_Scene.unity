@@ -70439,7 +70439,7 @@ MonoBehaviour:
   waitIndicatorType: 1
   delayDuration: 2
   doCounterbalancing: 1
-  counterbalanceOrder: 3
+  counterbalanceOrder: 5
   controllerMicButton: {fileID: -2829981993751271479, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!114 &2076941222
 MonoBehaviour:
