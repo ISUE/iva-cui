@@ -31413,7 +31413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17.16
+      value: -3.69
       objectReference: {fileID: 0}
     - target: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -36283,7 +36283,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "Press the <color=\"yellow\">[A]</color> button on the right controller
     to start speaking. \nPress the <color=\"yellow\">[A]</color> button again to
-    finish speaking.\n\nPractice at least 5 times."
+    finish speaking.\n\nPractice at least 3 times."
 --- !u!222 &1306415380
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -50809,7 +50809,8 @@ MonoBehaviour:
   interactiveShirt: {fileID: 444814951}
   transcriptionTextUI: {fileID: 2005980278}
   endOfSceneObject: {fileID: 3089352501470237219}
-  delayResponseBy: 2.5
+  delayResponseBy: 4.25
+  stdevDelayResponseBy: 0.2
   controllerMicButton: {fileID: -2829981993751271479, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!114 &1846947611
 MonoBehaviour:
