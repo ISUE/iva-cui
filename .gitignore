@@ -80,3 +80,7 @@ crashlytics-build.properties
 /Assets/StreamingAssets/EyeData.meta
 /Assets/StreamingAssets/Surveys/*
 /Assets/StreamingAssets/Surveys.meta
+/Assets/StreamingAssets/Conversations/*
+/Assets/StreamingAssets/Conversations.meta
+/Assets/StreamingAssets/latency_log.csv
+/Assets/StreamingAssets/latency_log.csv.meta
