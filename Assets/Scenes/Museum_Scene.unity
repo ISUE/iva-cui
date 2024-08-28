@@ -70451,7 +70451,7 @@ MonoBehaviour:
   waitIndicatorType: 1
   delayDuration: 2
   doCounterbalancing: 1
-  counterbalanceOrder: 6
+  counterbalanceOrder: 2
   controllerMicButton: {fileID: -2829981993751271479, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!114 &2076941222
 MonoBehaviour:
@@ -70534,6 +70534,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ip_colon_port: 127.0.0.1:8000
   whisper_ip_colon_port: http://192.168.0.15:8083/upload/
+  refreshAtStart: 1
 --- !u!4 &2076941226
 Transform:
   m_ObjectHideFlags: 0
@@ -70561,7 +70562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be1ca4b4a50000b4db9dcb9778956e40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countDownDuration: 30
+  countDownDuration: 20
 --- !u!114 &2076941228
 MonoBehaviour:
   m_ObjectHideFlags: 0
