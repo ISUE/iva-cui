@@ -10988,7 +10988,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.26574963, z: -0, w: -0.9640421}
   m_LocalPosition: {x: -15.9777, y: 1.1991, z: -19.2492}
-  m_LocalScale: {x: 10.443132, y: 10.764736, z: 2.215728}
+  m_LocalScale: {x: 10.443132, y: 10.764736, z: 1.7341174}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 719305556}
@@ -36148,8 +36148,8 @@ Transform:
   m_GameObject: {fileID: 1109802164}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.00000014901, z: -0.014974}
+  m_LocalScale: {x: 1.2007, y: 1, z: 1.1603}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 962006886}
@@ -52935,8 +52935,8 @@ Transform:
   m_GameObject: {fileID: 1531551081}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.000000059605, z: -0.026505}
+  m_LocalScale: {x: 1.1658, y: 1, z: 1.2125}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 59166625}
@@ -70451,7 +70451,7 @@ MonoBehaviour:
   waitIndicatorType: 1
   delayDuration: 2
   doCounterbalancing: 1
-  counterbalanceOrder: 2
+  counterbalanceOrder: 14
   controllerMicButton: {fileID: -2829981993751271479, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!114 &2076941222
 MonoBehaviour:
