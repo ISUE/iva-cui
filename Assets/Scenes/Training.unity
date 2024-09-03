@@ -31413,7 +31413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.69
+      value: -3.275
       objectReference: {fileID: 0}
     - target: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -50824,7 +50824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffa89c52cd16274419b7d757bc1c2adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedMicString: Microphone (NexiGo N930AF FHD Webcam Audio)
+  selectedMicString: Headset Microphone (Oculus Virtual Audio Device)
   vrAudioSrc: {fileID: 1086612643}
   pcAudioSrc: {fileID: 1086612643}
   micUnavailableSound: {fileID: 8300000, guid: 7f999dfb3c0632d47b1b10b7add0436c, type: 3}
