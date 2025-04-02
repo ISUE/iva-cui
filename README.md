@@ -45,6 +45,18 @@ This repository contains the Unity code for the IVA (Interactive Virtual Agent) 
 * Right Stick - Look around
 * Side Trigger (Grab) - Interact with objects
 
+## TODOs
+
+- [ ] Features
+  - [ ] Move to Unity 6
+  - [ ] Add support for sentence-by-sentence TTS playback
+  - [ ] Add one-click switching between Desktop and VR modes
+
+- [ ] Refactor
+  - [ ] Merge `Scene` branch into `main`
+  - [ ] Re-organize RAG and newer backend support into namespaces
+  - [ ] Remove unused assets and (optional) clear them from version history to reduce clone time
+
 ## OLDER VERSION BELOW
 
 ![ISUE logo](https://avatars.githubusercontent.com/u/10524889?s=200&v=4)
