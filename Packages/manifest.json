@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "com.readyplayerme.core": "https://github.com/readyplayerme/rpm-unity-sdk-core.git#v6.1.2",
+    "com.unity.cloud.gltfast": "6.0.1",
+    "com.unity.nuget.newtonsoft-json": "3.0.2",
     "com.unity.cinemachine": "2.9.5",
     "com.unity.collab-proxy": "2.2.0",
     "com.unity.feature.development": "1.0.1",
@@ -20,7 +21,6 @@
     "com.unity.xr.management": "4.4.1",
     "com.unity.xr.oculus": "4.2.0",
     "com.unity.xr.openxr": "1.10.0",
-    "com.whisper.unity": "https://github.com/Macoron/whisper.unity.git?path=/Packages/com.whisper.unity",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
