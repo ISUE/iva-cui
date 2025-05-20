@@ -7,7 +7,6 @@ public class MicrophoneHandler : MonoBehaviour
 
     private AudioClip recording;
     private int maxRecordingTime = 300;
-    //private int endSample = 0;
 
     // This is set through a dropdown in the editor. Impl. in TextToSpeechRequestEditor.cs
     [Header("Microphone input")]
@@ -28,7 +27,6 @@ public class MicrophoneHandler : MonoBehaviour
 
     private void Start()
     {
-        // Check if there is a microphone available
         if (Microphone.devices.Length > 0)
         {
             Debug.Log($"Microphone is currently set to {selectedMicString}");
@@ -71,7 +69,6 @@ public class MicrophoneHandler : MonoBehaviour
 
     private void StartMicInput()
     {
-        // Start the microphone recording as soon as the scene starts.
         recording = Microphone.Start(selectedMicString, true, maxRecordingTime, 16000);
         micStringThatIsRecording = selectedMicString;
         if (recording == null)

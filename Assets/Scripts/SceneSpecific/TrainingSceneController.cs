@@ -9,8 +9,6 @@ using UnityEngine.UI;
 
 public class TrainingSceneController : MonoBehaviour
 {
-    private static TrainingSceneController instance;
-
     [SerializeField] private AudioSource botAudioSource;
 
     [SerializeField] private Transform interactiveShirt;
@@ -57,7 +55,7 @@ public class TrainingSceneController : MonoBehaviour
     private IEnumerator OnTrainingSceneShirtPickupIEnumerator()
     {
         yield return new WaitForSeconds(1.5f);
-        AddItemToInventory(InventoryItem.Shirt);
+        Training_AddItemToInventory(InventoryItem.Shirt);
         interactiveShirt.gameObject.SetActive(false);
         MoveToNextPhase();
     }
@@ -98,7 +96,6 @@ public class TrainingSceneController : MonoBehaviour
 
     private static void SetUpdatedTaskText()
     {
-        // concatenate the text and update the text field
         string text = "";
         foreach (string task in taskStringsForDisplay)
         {
@@ -118,11 +115,6 @@ public class TrainingSceneController : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        instance = this;
-    }
-
     private void Start()
     {
         ServerInterface.RefreshTrainingConversation();
@@ -139,16 +131,10 @@ public class TrainingSceneController : MonoBehaviour
         micActiveObjects = FindObjectsOfType<RectTransform>().Where(t => t.name == "mic_active_object").ToList();
         SetMicActiveObjects(false);
 
-        // Initialize the dictionary
+        // Initialize the inventory
         inventorySprites = new Dictionary<InventoryItem, Sprite>
         {
-            //{ InventoryItem.ConfirmationCode, Resources.Load<Sprite>("Inventory/Confirmation_Code") },
             { InventoryItem.Shirt, Resources.Load<Sprite>("Inventory/Red_Shirt") },
-            //{ InventoryItem.HotelDirectory, Resources.Load<Sprite>("Inventory/Hotel_Brocherure") },
-            //{ InventoryItem.HotelKey, Resources.Load<Sprite>("Inventory/Key-Hotel") },
-            //{ InventoryItem.MealPass, Resources.Load<Sprite>("Inventory/Meal_Ticket") },
-            //{ InventoryItem.MuseumTicket, Resources.Load<Sprite>("Inventory/Museum_Ticket") },
-            //{ InventoryItem.MuseumBrochure, Resources.Load<Sprite>("Inventory/Museum_Booklet") }
         };
 
         // find the four objects "InventorySlot1", "InventorySlot2", "InventorySlot3", "InventorySlot4"
@@ -220,13 +206,11 @@ public class TrainingSceneController : MonoBehaviour
             endOfSceneObject.SetActive(true);
         }
 
-        // Send the transcription to the server to generate a response
         StartCoroutine(GenerateResponseToTranscription(transcription));
     }
 
     private IEnumerator GenerateResponseToTranscription(string text)
     {
-        // URL encode the text
         string encodedText = UnityWebRequest.EscapeURL(text);
         string url = $"http://127.0.0.1:8000/speak/agent1/?q={encodedText}";
 
@@ -242,16 +226,12 @@ public class TrainingSceneController : MonoBehaviour
             }
             else
             {
-                //SceneProfiling.ttsReqEnd = Time.time;
                 Debug.Log($"Received: {webRequest.downloadHandler.text}");
-                SpeechResponse speechResponse = ExtractInfoFromResponse(webRequest.downloadHandler.text);
+                TrainingSpeechResponse speechResponse = ExtractInfoFromResponse(webRequest.downloadHandler.text);
 
-                //ConversationLogger.LogAgentMessage(agentType, speechResponse.message);
-
-                //print(speechResponse);
                 string audioFileUrl = $"http://127.0.0.1:8000/{speechResponse.audio}";
 
-                StartCoroutine(DownloadAndPlayAudio(audioFileUrl, speechResponse));
+                StartCoroutine(Training_DownloadAndPlayAudio(audioFileUrl, speechResponse));
             }
         }
     }
@@ -265,9 +245,8 @@ public class TrainingSceneController : MonoBehaviour
         return mean + standardDeviation * randStdNormal; // return the normally distributed value
     }
 
-    private IEnumerator DownloadAndPlayAudio(string audioUrl, SpeechResponse speechResponse)
+    private IEnumerator Training_DownloadAndPlayAudio(string audioUrl, TrainingSpeechResponse speechResponse)
     {
-        //SceneProfiling.ttsVoiceDownloadStart = Time.time;
         using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(audioUrl, AudioType.MPEG))
         {
             yield return www.SendWebRequest();
@@ -295,12 +274,6 @@ public class TrainingSceneController : MonoBehaviour
                 botAudioSource.Play();
                 isThinking = false;
                 timeStamp_UserFinishedInput = 0.0f;
-
-                //StartCoroutine(SendTransitionCheckRequest(agent));
-
-                //SceneProfiling.ttsVoicePlayStart = Time.time;
-                //SceneProfiling.ComputeTimes(speechResponse);
-                //SceneProfiling.LogLatencyDetails(agent, speechResponse);
             }
             else
             {
@@ -311,21 +284,12 @@ public class TrainingSceneController : MonoBehaviour
     }
 
     [System.Serializable]
-    public class SpeechResponse
+    public class TrainingSpeechResponse
     {
         public string message;
         public string audio;
         public string transition;
 
-        /* We also have the following fields in the response JSON:
-         * logging_info = {
-            "llm_client_name": LLM_CLIENT_NAME,
-            "user_input_word_count": len(text.split()),
-            "response_word_count": len(llm_response.split()),
-            "transition_length": len(next_user_task.split()),
-            "llm_generation_time": f"{_llm_processing_duration:.3f}",
-            "speech_generation_time": f"{_speech_generation_duration:.3f}"}
-        */
         public string llm_client_name;
         public int user_input_word_count;
         public int response_word_count;
@@ -335,7 +299,6 @@ public class TrainingSceneController : MonoBehaviour
 
         public override string ToString()
         {
-            // Separate each field with a newline
             return $"Message: {message}\n" +
                    $"Audio: {audio}\n" +
                    $"Transition: {transition}\n" +
@@ -348,21 +311,15 @@ public class TrainingSceneController : MonoBehaviour
         }
     }
 
-    // Function to extract the audio URL and the message from the server response
-    private SpeechResponse ExtractInfoFromResponse(string response)
+    private TrainingSpeechResponse ExtractInfoFromResponse(string response)
     {
-        return JsonUtility.FromJson<SpeechResponse>(response);
+        return JsonUtility.FromJson<TrainingSpeechResponse>(response);
     }
 
-    public static void AddItemToInventory(InventoryItem item)
+    public static void Training_AddItemToInventory(InventoryItem item)
     {
-        // fill the first unocupied slot
-        // iterate over the list of inventorySlotsOnUI and find the first unoccupied slot to add the item there
-        // Set that object to active
+        Sprite itemSprite = Training_GetSpriteForItem(item);
 
-        Sprite itemSprite = GetSpriteForItem(item);
-
-        // first check if an item is already present, and if so log warning
         foreach (var slot in inventorySlotsOnUI)
         {
             if (slot.gameObject.activeInHierarchy && slot.sprite != null)
@@ -386,16 +343,14 @@ public class TrainingSceneController : MonoBehaviour
         }
     }
 
-    public static void RemoveItemFromInventory(InventoryItem item)
+    public static void Training_RemoveItemFromInventory(InventoryItem item)
     {
-        // Get the sprite associated with the item
-        Sprite itemSprite = GetSpriteForItem(item);
+        Sprite itemSprite = Training_GetSpriteForItem(item);
 
         foreach (var slot in inventorySlotsOnUI)
         {
             if (slot.sprite != null && slot.gameObject.activeInHierarchy)
             {
-                // Compare the sprite names instead of their references
                 if (slot.sprite.name == itemSprite.name)
                 {
                     slot.sprite = null;
@@ -406,7 +361,7 @@ public class TrainingSceneController : MonoBehaviour
         }
     }
 
-    public static Sprite GetSpriteForItem(InventoryItem item)
+    public static Sprite Training_GetSpriteForItem(InventoryItem item)
     {
         if (inventorySprites.TryGetValue(item, out Sprite sprite))
         {

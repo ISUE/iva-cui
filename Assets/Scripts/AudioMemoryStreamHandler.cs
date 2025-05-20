@@ -79,8 +79,7 @@ public class AudioMemoryStreamHandler
         //converting in 2 float[] steps to Int16[], //then Int16[] to Byte[]
 
         Byte[] bytesData = new Byte[rawData.Length * 2];
-        //bytesData array is twice the size of
-        //dataSource array because a float converted in Int16 is 2 bytes.
+        //bytesData array is twice the size of dataSource array because a float converted in Int16 is 2 bytes.
 
         int rescaleFactor = 32767;
 

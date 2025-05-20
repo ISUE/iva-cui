@@ -1,13 +1,13 @@
+using LLMAgents;
 using System;
 using System.Collections;
-using LLMAgents;
 using UnityEngine;
 using UnityEngine.Networking;
 
 public class ServerInterface : MonoBehaviour
 {
-    public string ip_colon_port = "127.0.0.1:8000";
-    public string whisper_ip_colon_port = "http://45.56.116.241:8083/upload/";
+    public string hostIpPort = "127.0.0.1:8000";
+    public string whisperIpPort = "http://127.0.0.1:8083/transcribe_audio/";
 
     public static ServerInterface instance;
 
@@ -39,7 +39,7 @@ public class ServerInterface : MonoBehaviour
     private IEnumerator SendRefreshRequest(string sceneToRefresh)
     {
         Debug.Log("Sending refresh request for " + sceneToRefresh);
-        string url = $"http://{ip_colon_port}/refresh/{sceneToRefresh}/";
+        string url = $"http://{hostIpPort}/refresh/{sceneToRefresh}/";
 
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
         {
@@ -63,10 +63,9 @@ public class ServerInterface : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddBinaryData("file", audioBytes, "temp.wav", "audio/wav");
 
-        UnityWebRequest www = UnityWebRequest.Post(whisper_ip_colon_port, form);
+        UnityWebRequest www = UnityWebRequest.Post(whisperIpPort, form);
         www.downloadHandler = new DownloadHandlerBuffer();
 
-        // Send the request and wait for a response
         yield return www.SendWebRequest();
 
         if (www.result != UnityWebRequest.Result.Success)
@@ -76,9 +75,6 @@ public class ServerInterface : MonoBehaviour
         else
         {
             Debug.Log("Success: " + www.downloadHandler.text);
-            //print($"Time taken to upload: {Time.time - recordingStopTime}");
-
-            // extract text using serialization
             string text = ExtractTranscriptiontFromResponse(www.downloadHandler.text);
             SceneProfiling.asrEnd = Time.time;
             callback?.Invoke(text);
@@ -91,7 +87,6 @@ public class ServerInterface : MonoBehaviour
         public string transcription;
     }
 
-    // function to extract the text from the server response
     private string ExtractTranscriptiontFromResponse(string response)
     {
         WhisperResponse whisperResponse = JsonUtility.FromJson<WhisperResponse>(response);
@@ -103,9 +98,8 @@ public class ServerInterface : MonoBehaviour
         SceneProfiling.ttsReqStart = Time.time;
         string agentTypeString = agentType.ToString().ToLower();
 
-        // URL encode the text
         string encodedText = UnityWebRequest.EscapeURL(text);
-        string url = $"http://{ip_colon_port}/speak/{agentTypeString}/?q={encodedText}";
+        string url = $"http://{hostIpPort}/speak/{agentTypeString}/?q={encodedText}";
 
         print($"Sending a request to middleware server");
 
@@ -116,7 +110,6 @@ public class ServerInterface : MonoBehaviour
             if (webRequest.result != UnityWebRequest.Result.Success)
             {
                 Debug.Log($"Error: {webRequest.error}");
-                // TODO FIXME reset the status back to idle
             }
             else
             {
@@ -126,8 +119,7 @@ public class ServerInterface : MonoBehaviour
 
                 ConversationLogger.LogAgentMessage(agentType, speechResponse.message);
 
-                //print(speechResponse);
-                string audioFileUrl = $"http://{ip_colon_port}/{speechResponse.audio}";
+                string audioFileUrl = $"http://{hostIpPort}/{speechResponse.audio}";
 
                 StartCoroutine(DownloadAndPlayAudio(agentType, audioFileUrl, speechResponse));
             }
@@ -144,20 +136,11 @@ public class ServerInterface : MonoBehaviour
             if (www.result == UnityWebRequest.Result.Success)
             {
                 AudioClip clip = DownloadHandlerAudioClip.GetContent(www);
-                AgentSelectionController.PlayAudioForAgent(agent, clip);
+                AgentSelectionController.PlayAudioForAgent(agent, clip, speechResponse);
 
-                if (ProfileLocalDelays.isProfiling) // mark response arrived only if profiling
-                {
-                    ProfileLocalDelays.responseArrived = true;
-                }
-
-                if (!ProfileLocalDelays.isProfiling) // only request transition if not profiling
-                {
-                    StartCoroutine(SendTransitionCheckRequest(agent));
-                }
+                StartCoroutine(SendTransitionCheckRequest(agent));
 
                 SceneProfiling.ComputeTimes(speechResponse);
-                SceneProfiling.LogLatencyDetails(agent, speechResponse);
             }
             else
             {
@@ -173,16 +156,9 @@ public class ServerInterface : MonoBehaviour
         public string audio;
         public string transition;
 
-        /* We also have the following fields in the response JSON:
-         * logging_info = {
-            "llm_client_name": LLM_CLIENT_NAME,
-            "user_input_word_count": len(text.split()),
-            "response_word_count": len(llm_response.split()),
-            "transition_length": len(next_user_task.split()),
-            "llm_generation_time": f"{_llm_processing_duration:.3f}",
-            "speech_generation_time": f"{_speech_generation_duration:.3f}"}
-        */
+        // Fields arriving in JSON response
         public string llm_client_name;
+
         public int user_input_word_count;
         public int response_word_count;
         public int transition_length;
@@ -191,7 +167,6 @@ public class ServerInterface : MonoBehaviour
 
         public override string ToString()
         {
-            // Separate each field with a newline
             return $"Message: {message}\n" +
                    $"Audio: {audio}\n" +
                    $"Transition: {transition}\n" +
@@ -204,7 +179,6 @@ public class ServerInterface : MonoBehaviour
         }
     }
 
-    // Function to extract the audio URL and the message from the server response
     private SpeechResponse ExtractInfoFromResponse(string response)
     {
         return JsonUtility.FromJson<SpeechResponse>(response);
@@ -214,7 +188,7 @@ public class ServerInterface : MonoBehaviour
     {
         string agentTypeString = agentType.ToString().ToLower();
 
-        string url = $"http://{ip_colon_port}/check_transition/{agentTypeString}/";
+        string url = $"http://{hostIpPort}/check_transition/{agentTypeString}/";
 
         Debug.Log($"Sending transition check for {agentTypeString} via {url}");
 

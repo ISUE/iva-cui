@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class adjustUserHeightMuseum : MonoBehaviour
 {
-    [SerializeField] private float heightAdjustment = 0.128f; 
+    [SerializeField] private float heightAdjustment = 0.128f;
     private XROrigin player;
     private bool heightAdjusted = false;
 
@@ -18,7 +18,7 @@ public class adjustUserHeightMuseum : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("usercollider") && !heightAdjusted) 
+        if (other.CompareTag("usercollider") && !heightAdjusted)
         {
             AdjustHeight(heightAdjustment);
             heightAdjusted = true;
@@ -29,7 +29,7 @@ public class adjustUserHeightMuseum : MonoBehaviour
     {
         if (other.CompareTag("usercollider") && heightAdjusted)
         {
-            AdjustHeight(-heightAdjustment); 
+            AdjustHeight(-heightAdjustment);
             heightAdjusted = false;
         }
     }

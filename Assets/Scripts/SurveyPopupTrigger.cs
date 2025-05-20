@@ -7,7 +7,7 @@ public class SurveyPopupTrigger : MonoBehaviour
 
     private void Start()
     {
-        // Check if the name of the object is the same as the agent type
+        // Error if if the name of the object is not the same as the agent type
         if (!name.Contains(agentType.ToString()))
         {
             Debug.LogError("Agent type and object name do not match.");

@@ -1,6 +1,6 @@
+using LLMAgents;
 using System.Collections;
 using System.Collections.Generic;
-using LLMAgents;
 using UnityEngine;
 
 public class MuseumSceneController : MonoBehaviour

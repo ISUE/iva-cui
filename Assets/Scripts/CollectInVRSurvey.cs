@@ -1,7 +1,7 @@
+using LLMAgents;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using LLMAgents;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -303,31 +303,26 @@ public class CollectInVRSurvey : MonoBehaviour
 
     public void OnToggleOneChoice()
     {
-        //Debug.Log("clicked on 1");
         selectOneOptionWarningText.gameObject.SetActive(false);
     }
 
     public void OnToggleTwoChoice()
     {
-        //Debug.Log("clicked on 2");
         selectOneOptionWarningText.gameObject.SetActive(false);
     }
 
     public void OnToggleThreeChoice()
     {
-        //Debug.Log("clicked on 3");
         selectOneOptionWarningText.gameObject.SetActive(false);
     }
 
     public void OnToggleFourChoice()
     {
-        //Debug.Log("clicked on 4");
         selectOneOptionWarningText.gameObject.SetActive(false);
     }
 
     public void OnToggleFiveChoice()
     {
-        //print("clicked on 5");
         selectOneOptionWarningText.gameObject.SetActive(false);
     }
 

@@ -1,3 +1,4 @@
+using LLMAgents;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,6 @@ public class StudyTasks : MonoBehaviour
     private static List<TMP_Text> inventoryTextOnUI = new List<TMP_Text>();
 
     private static MicrophoneHandler microphoneHandler;
-    //private static XRDirectInteractor leftHandInteractor;
 
     private void InitializeFirstTask()
     {
@@ -56,16 +56,16 @@ public class StudyTasks : MonoBehaviour
 
     public static bool agentFinishedTalking = false;
 
-    public static IEnumerator SetAgentFinishedTalkingAfterSeconds(float seconds)
+    public static IEnumerator SetAgentFinishedTalkingAfterSeconds(float seconds, AgentType agentType, ServerInterface.SpeechResponse speechResponse)
     {
         yield return new WaitForSeconds(seconds);
         agentFinishedTalking = true;
         SceneProfiling.ttsVoicePlayEnd = Time.time;
+        SceneProfiling.LogLatencyDetails(agentType, speechResponse);
     }
 
     public static IEnumerator HandleLLMDeterminedTask(string task)
     {
-        // if length is 0, ignore
         if (task.Length == 0 || task.Equals("none"))
         {
             yield break;
@@ -101,14 +101,10 @@ public class StudyTasks : MonoBehaviour
             taskStringsForDisplay[taskStringsForDisplay.Count - 1] = $"<s>{taskStringsForDisplay[taskStringsForDisplay.Count - 1]}</s>";
         }
 
-        // Add the new task
         taskStringsForDisplay.Add(task);
 
         SetUpdatedTaskText();
         microphoneHandler.PlayNewTaskAvailableNotificationSound();
-
-        //leftHandInteractor = FindObjectsOfType<XRDirectInteractor>().Where(t => t.transform.parent.name == "Left Controller").ToList()[0];
-        //leftHandInteractor.SendHapticImpulse(0.7f, 0.5f);
     }
 
     private static void SetUpdatedTaskText()
@@ -192,11 +188,6 @@ public class StudyTasks : MonoBehaviour
                 }
             }
 
-            //var img = slot.GetComponent<Image>();
-            //if (img != null)
-            //{
-            //    inventoryImagesOnUI.Add(img);
-            //}
             slot.gameObject.SetActive(false);
         }
 
@@ -238,14 +229,12 @@ public class StudyTasks : MonoBehaviour
 
     public static void RemoveItemFromInventory(InventoryItem item)
     {
-        // Get the sprite associated with the item
         Sprite itemSprite = GetSpriteForItem(item);
 
         for (int i = 0; i < inventorySlotsOnUI.Count; i++)
         {
             if (inventorySlotsOnUI[i].gameObject.activeInHierarchy && inventoryImagesOnUI[i].sprite != null)
             {
-                // Compare the sprite names instead of their references
                 if (inventoryImagesOnUI[i].sprite.name == itemSprite.name)
                 {
                     inventoryImagesOnUI[i].sprite = null;

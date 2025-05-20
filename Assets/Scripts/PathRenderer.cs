@@ -10,7 +10,6 @@ public class PathRenderer : MonoBehaviour
     public float displayInterval = 0.03f; // Time between enabling each child
     private Coroutine pathCoroutine;
 
-    //private static List<Transform> activePathChildTransforms = new List<Transform>();
     private static List<Transform> firstFiveTransforms = new List<Transform>();
 
     private static List<Vector3> vector3s = new List<Vector3>();
@@ -44,7 +43,7 @@ public class PathRenderer : MonoBehaviour
         Debug.Log("Disabling all paths rendering");
         foreach (GameObject path in instance.paths)
         {
-            path.SetActive(false); // Disable the entire path
+            path.SetActive(false);
         }
     }
 
@@ -91,7 +90,7 @@ public class PathRenderer : MonoBehaviour
 
     private IEnumerator ShowChildObjectsSequentially()
     {
-        int[] indices = { 0, 1, 2, 3, 4 }; // Indices for the first five transforms
+        int[] indices = { 0, 1, 2, 3, 4 };
         int i = 0;
 
         while (true)

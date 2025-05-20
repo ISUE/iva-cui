@@ -1,7 +1,7 @@
+using LLMAgents;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using LLMAgents;
 using UnityEngine;
 using UnityEngine.Animations;
 
@@ -68,7 +68,7 @@ public class ActivationZone : MonoBehaviour
         standard = parentZone.GetComponent<Renderer>().material;
 
         // Add an aim constraint source
-        avatarHead.TryGetComponent<AimConstraint>(out aimConstraint);
+        avatarHead.TryGetComponent(out aimConstraint);
         if (aimConstraint == null)
         {
             Debug.LogWarning("No aim constraint found on agent head.");
@@ -119,7 +119,6 @@ public class ActivationZone : MonoBehaviour
         AgentSelectionController.currentZone = this;
         AgentSelectionController.lastZone = AgentSelectionController.currentZone;
         playerInZone = true;
-        //LookAtPlayer();
     }
 
     private void OnTriggerExit(Collider other)
@@ -135,7 +134,6 @@ public class ActivationZone : MonoBehaviour
 
     public void MarkAsInteractedAtLeastOnce()
     {
-        // Set the "HasInteracted" bool on animator, if it exists
         if (animator != null)
         {
             animator.SetBool("HasInteracted", true);
@@ -144,15 +142,6 @@ public class ActivationZone : MonoBehaviour
 
     public void SetIsListening()
     {
-        // randomly pick between "IsListening" and "IsListening2" to play the listening animation
-        //if (Random.Range(0, 2) == 0)
-        //{
-        //    animator?.SetBool("IsListening", true);
-        //}
-        //else
-        //{
-        //    animator?.SetBool("IsListening2", true);
-        //}
         animator?.SetBool("IsListening", true);
         if (StudyControls.USE_NEW_LOOKAWAY)
         {
@@ -170,7 +159,7 @@ public class ActivationZone : MonoBehaviour
             case StudyControls.WaitIndicatorType.Natural:
                 if (animator != null)
                 {
-                    if (val) // if true, set a random thinking animation ("IsThinking1", "IsThinking2" and "IsThinking3")
+                    if (val)
                     {
                         int random = Random.Range(0, 3);
                         switch (random)
@@ -188,7 +177,7 @@ public class ActivationZone : MonoBehaviour
                                 break;
                         }
                     }
-                    else // otherwise, disable all thinking animations
+                    else
                     {
                         animator?.SetBool("IsThinking1", val);
                         animator?.SetBool("IsThinking2", val);
@@ -256,7 +245,6 @@ public class ActivationZone : MonoBehaviour
         if (StudyControls.instance.delayDuration == StudyControls.DelayDuration.One)
         {
             clips = clips.Where(clip => clip.length < 1).ToList();
-            //Debug.Log($"Num clips available for {agentType}: {clips.Count}");
         }
 
         audioSource.clip = clips[Random.Range(0, clips.Count)];
@@ -283,7 +271,7 @@ public class ActivationZone : MonoBehaviour
     {
         if (StudyControls.USE_NEW_LOOKAWAY)
         {
-            if (value && !playerInZone) // If trying to set to true and player is not in zone
+            if (value && !playerInZone)
             {
                 return;
             }
@@ -364,7 +352,7 @@ public class ActivationZone : MonoBehaviour
 
             // Check if this is within the 60 degree cone of the agent body's forward direction
             // angle only around the y-axis is considered
-            Transform agentBodyTransform = avatarHead.parent.parent.parent.parent.parent.parent.parent.parent.transform;
+            Transform agentBodyTransform = avatarHead.parent.parent.parent.parent.parent.parent.parent.parent.transform; // based on VALID body hierarchy
             print($"agent's body: {agentBodyTransform.name}");
 
             Vector3 agentBodyForward = agentBodyTransform.forward;
@@ -384,7 +372,6 @@ public class ActivationZone : MonoBehaviour
             else
             {
                 Debug.LogWarning("Angle is no good. Playing default animation");
-                //lookingAwayWhileThinking = false;
                 lastAngleWasBad = true;
                 LookAtPlayer(false);
             }

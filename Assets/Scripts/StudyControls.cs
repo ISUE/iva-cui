@@ -73,6 +73,8 @@ public class StudyControls : MonoBehaviour
         DetermineUserStudySceneName();
     }
 
+    #region CUI2025_Study
+
     public static string GetUserStudySceneName()
     {
         return userStudySceneName;
@@ -215,6 +217,8 @@ public class StudyControls : MonoBehaviour
         delayDuration = GetDelayLevelBasedOnConditionIdx(conditionsOrder[conditionIdx]);
     }
 
+    #endregion CUI2025_Study
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.M))
@@ -315,7 +319,6 @@ public class StudyControls : MonoBehaviour
 
     private void OnFinishASR(string text)
     {
-        //print(text);
         ConversationLogger.LogUserMessage(speakingToThisAgent, text);
         StartCoroutine(test_ServerInterface.SendTextToSpeechRequest(speakingToThisAgent, text));
     }

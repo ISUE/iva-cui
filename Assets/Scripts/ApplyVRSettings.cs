@@ -31,7 +31,6 @@ public class ApplyVRSettings : MonoBehaviour
 
     private void ApplySettings()
     {
-        // Set the microphone to the Oculus Quest microphone
         MicrophoneHandler microphoneHandler = FindObjectOfType<MicrophoneHandler>();
         if (microphoneHandler == null)
         {
@@ -40,7 +39,6 @@ public class ApplyVRSettings : MonoBehaviour
         }
         microphoneHandler.selectedMicString = questMicString;
 
-        // Make sure eye tracking object is enabled
         if (EyeTrackingObject != null)
         {
             EyeTrackingObject.SetActive(true);
@@ -76,11 +74,9 @@ public class ApplyVRSettings : MonoBehaviour
         if (!Application.IsPlaying(gameObject))
             return;
 
-        // Get the current position of the HMD (headset)
         currentHMDPosition = playerHead.transform.position;
         float deltaY = currentHMDPosition.y - referenceHeightM;
 
-        // Adjust the player's position based on the recorded reference height
         player.transform.position -= new Vector3(0, deltaY, 0);
 
         Debug.Log($"Player Position Adjusted: {player.transform.position}");

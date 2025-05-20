@@ -1,6 +1,6 @@
+using LLMAgents;
 using System.Collections;
 using System.Collections.Generic;
-using LLMAgents;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -40,7 +40,6 @@ public class ShirtsSceneController : MonoBehaviour
     {
         if (shirtNeedsPickup)
         {
-            // Check for P key press
             if (Input.GetKeyDown(KeyCode.P))
             {
                 SetReturnShirtAtStoreObjects();
@@ -108,7 +107,6 @@ public class ShirtsSceneController : MonoBehaviour
 
         StudyTasks.AdvanceTaskOnUI(tasks[2]);
 
-        // Make the shirt not highlighted
         StartCoroutine(HideShirtAfterDelay(1f));
 
         // Make the arrow point to the store Clerk

@@ -27,7 +27,7 @@ namespace LLMAgents
             instance = this;
         }
 
-        public static void PlayAudioForAgent(AgentType agentType, AudioClip audioClip)
+        public static void PlayAudioForAgent(AgentType agentType, AudioClip audioClip, ServerInterface.SpeechResponse speechResponse)
         {
             foreach (ActivationZone zone in instance.zones)
             {
@@ -55,7 +55,7 @@ namespace LLMAgents
                     }
 
                     instance.StartCoroutine(instance.PlayAgentResponseAfterDelay(zone, audioClip, remainingDelay));
-                    instance.StartCoroutine(StudyTasks.SetAgentFinishedTalkingAfterSeconds(audioClip.length + remainingDelay));
+                    instance.StartCoroutine(StudyTasks.SetAgentFinishedTalkingAfterSeconds(audioClip.length + remainingDelay, agentType, speechResponse));
                     return;
                 }
             }
