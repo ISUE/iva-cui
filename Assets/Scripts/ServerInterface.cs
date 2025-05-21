@@ -48,6 +48,11 @@ public class ServerInterface : MonoBehaviour
             if (webRequest.result != UnityWebRequest.Result.Success)
             {
                 Debug.LogError($"Error refreshing message history: {webRequest.error}");
+
+                if (webRequest.error.ToLower().Contains("cannot connect"))
+                {
+                    Debug.LogError($"Make sure that Python backend is running on {hostIpPort}");
+                }
             }
             else
             {

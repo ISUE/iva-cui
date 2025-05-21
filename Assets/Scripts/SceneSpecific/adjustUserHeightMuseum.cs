@@ -12,7 +12,7 @@ public class adjustUserHeightMuseum : MonoBehaviour
         player = FindObjectOfType<XROrigin>();
         if (player == null)
         {
-            Debug.LogError("XROrigin not found. Make sure the XROrigin is active in the scene.");
+            Debug.LogWarning("XROrigin not found. If you're trying to run this in VR mode, make sure the XROrigin is active in the scene.");
         }
     }
 
