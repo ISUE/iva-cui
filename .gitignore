@@ -72,21 +72,21 @@ sysinfo.txt
 /iva-cui-unity/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
 
 # Temporary auto-generated Android Assets
-/iva-cui-unity//[Aa]ssets/[Ss]treamingAssets/aa.meta
-/iva-cui-unity//[Aa]ssets/[Ss]treamingAssets/aa/*
+/iva-cui-unity/[Aa]ssets/[Ss]treamingAssets/aa.meta
+/iva-cui-unity/[Aa]ssets/[Ss]treamingAssets/aa/*
 /iva-cui-unity/.plastic/
 
 # WIP loggers and surveys
-/iva-cui-unity//Assets/StreamingAssets/EyeData/*
-/iva-cui-unity//Assets/StreamingAssets/EyeData.meta
-/iva-cui-unity//Assets/StreamingAssets/Surveys/*
-/iva-cui-unity//Assets/StreamingAssets/Surveys.meta
-/iva-cui-unity//Assets/StreamingAssets/Conversations/*
-/iva-cui-unity//Assets/StreamingAssets/Conversations.meta
-/iva-cui-unity//Assets/StreamingAssets/latency_log.csv
-/iva-cui-unity//Assets/StreamingAssets/latency_log.csv.meta
-/iva-cui-unity//Assets/StreamingAssets/EXPORT.meta
-/iva-cui-unity//Assets/StreamingAssets/EXPORT/
+/iva-cui-unity/Assets/StreamingAssets/EyeData/*
+/iva-cui-unity/Assets/StreamingAssets/EyeData.meta
+/iva-cui-unity/Assets/StreamingAssets/Surveys/*
+/iva-cui-unity/Assets/StreamingAssets/Surveys.meta
+/iva-cui-unity/Assets/StreamingAssets/Conversations/*
+/iva-cui-unity/Assets/StreamingAssets/Conversations.meta
+/iva-cui-unity/Assets/StreamingAssets/latency_log.csv
+/iva-cui-unity/Assets/StreamingAssets/latency_log.csv.meta
+/iva-cui-unity/Assets/StreamingAssets/EXPORT.meta
+/iva-cui-unity/Assets/StreamingAssets/EXPORT/
 
 ###
 ### Python .gitignore
@@ -227,5 +227,5 @@ cython_debug/
 .pypirc
 
 ### Project specific ###
-/python_middleware/timings
-/python_middleware/static/
+/iva-cui-backend/python_middleware/timings
+/iva-cui-backend/python_middleware/static/
