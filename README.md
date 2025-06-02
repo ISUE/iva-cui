@@ -21,7 +21,7 @@ All scenes are located in [iva-cui-unity/Assets/Scenes/](iva-cui-unity/Assets/Sc
 * Run [Python backend](#python-setup) before running the Unity scenes.
 * VR and Desktop (non-VR) modes are supported. Follow instructions in [Desktop Mode](#desktop-mode) and [VR Mode](#vr-mode).
 * To speak with agents, **toggle mic on before** and **toggle mic off after** you speak (see [Controls](#controls)). Adjust microphone on the `SceneControls` gameobject in scene hierarchy (see screenshot below, [Desktop Mode](#desktop-mode) and [VR Mode](#vr-mode)).
-* Agents will respond after a short delay. If no agent can hear you or an agent is currently *thinking* or *speaking*, you will hear a **broken mic** sound.
+* Agents will respond after a short delay. If no agent can hear you or an agent is currently *thinking* or *speaking*, you will hear a **broken mic** sound.  
 ![mic setup](setup.png)
 
 ### Desktop mode
