@@ -27,7 +27,7 @@ class OpenAIClient_llama3:
 
 
 class OpenAIClient_gpt4o:
-    def __init__(self, on_device=False):
+    def __init__(self):
         self.client = OpenAI(
             api_key=load_openai_key(),
         )
@@ -44,7 +44,7 @@ class OpenAIClient_gpt4o:
 
 
 class OpenAIClient_gpt4o_mini:
-    def __init__(self, on_device=False):
+    def __init__(self):
         self.client = OpenAI(
             api_key=load_openai_key(),
         )

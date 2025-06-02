@@ -11,9 +11,10 @@ import time
 from TTS import _make_speech
 from conversation_handler import ConversationHandler
 
-LLM_CLIENT_NAME = "llamafile_llama3"
+# LLM_CLIENT_NAME = "llamafile_llama3"
 # LLM_CLIENT_NAME = "openai_4"
 # LLM_CLIENT_NAME = "openai_4mini"
+LLM_CLIENT_NAME = "ollama"
 
 ON_THIS_DEVICE = False
 

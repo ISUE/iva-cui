@@ -29,7 +29,6 @@ print(R + f"Type 'history' to see the conversation history")
 print(R + f"Type 'exit' or 'quit' to exit the program")
 
 while True:
-
     usr_msg = input(CYAN + f"Addressing {curr_role}: Enter command or message: ")
 
     if usr_msg in ["exit", "quit"]:
