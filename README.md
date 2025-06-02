@@ -1,9 +1,21 @@
 # IVA-CUI
 
-This repository contains the Python and Unity code for a paper titled
-[Mitigating Response Delays in Free-Form Conversations with LLM-powered Intelligent Virtual Agents](https://doi.org/10.1145/3719160.3736636) to appear in the Proceedings of the 7th ACM Conference on Conversational User Interfaces [(CUI '25)](https://cui.acm.org/2025/).
+This repository contains the Python and Unity code for a [paper](https://doi.org/10.1145/3719160.3736636) titled
+"**Mitigating Response Delays in Free-Form Conversations with LLM-powered Intelligent Virtual Agents**" to appear in the Proceedings of the 7th ACM Conference on Conversational User Interfaces [(CUI '25)](https://cui.acm.org/2025/).
 
 ## Table of Contents
+- [Unity Setup](#unity-setup)
+  - [User study scenes](#user-study-scenes)
+  - [How to run the scenes](#how-to-run-the-scenes)
+  - [Desktop mode](#desktop-mode)
+  - [VR mode](#vr-mode)
+  - [Controls](#controls)
+- [Python Setup](#python-setup)
+  - [Setup Steps](#setup-steps)
+    - [Running LLM locally on Windows](#running-llm-locally-on-windows)
+    - [Running Python middleware on Windows](#running-python-middleware-on-windows)
+    - [Running the ASR model on WSL](#running-the-asr-model-on-wsl)
+- [Citation](#citation)  
 
 ## Unity Setup
 
