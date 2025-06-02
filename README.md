@@ -1,22 +1,28 @@
-# IVA-Unity
+# IVA-CUI
 
-This repository contains the Unity code for the IVA (Interactive Virtual Agent) project.
+This repository contains the Python and Unity code for a paper titled
+[Mitigating Response Delays in Free-Form Conversations with LLM-powered Intelligent Virtual Agents](https://doi.org/10.1145/3719160.3736636) to appear in the Proceedings of the 7th ACM Conference on Conversational User Interfaces [(CUI '25)](https://cui.acm.org/2025/).
 
-## User study scenes
+## Table of Contents
 
-* `Assets/Scenes/City_Scene.unity` -> Scenario 1
-* `Assets/Scenes/Hotel_Scene.unity` -> Scenario 2
-* `Assets/Scenes/Museum_Scene.unity` -> Scenario 3
+## Unity Setup
 
-## How to run the scenes
+### User study scenes
+
+All scenes are located in [iva-cui-unity/Assets/Scenes/](iva-cui-unity/Assets/Scenes/). List of licenses for third-party code and assets used in this project can be found in the [ASSET_LICENSES.md](iva-cui-unity/ASSET_LICENSES.md) file.
+
+* `City_Scene.unity` -> Scenario 1
+* `Hotel_Scene.unity` -> Scenario 2
+* `Museum_Scene.unity` -> Scenario 3
+
+### How to run the scenes
 
 * Unity version: 2022.3.21
-* You need to have the `Python backend` running (IVA-Backend repository) to run the scenes.
-* These scenes support VR and Desktop (non-VR) modes. Follow the instruction below to run the scenes in the desired mode.
-* In both modes, you need to be pretty close to the agent to interact with it. The agent will not respond if you are too far away, and you will hear a corresponding "broken mic" sound.
-* To speak, press the microphone button (see below) start recording, and press it again after you finish speaking. The agent will respond after a short delay.
-
-![setup](setup.png)
+* Run [Python backend](#python-setup) before running the Unity scenes.
+* VR and Desktop (non-VR) modes are supported. Follow instructions in [Desktop Mode](#desktop-mode) and [VR Mode](#vr-mode).
+* To speak with agents, **toggle mic on before** and **toggle mic off after** you speak (see [Controls](#controls)). Adjust microphone on the `SceneControls` gameobject in scene hierarchy (see screenshot below, [Desktop Mode](#desktop-mode) and [VR Mode](#vr-mode)).
+* Agents will respond after a short delay. If no agent can hear you or an agent is currently *thinking* or *speaking*, you will hear a **broken mic** sound.
+![mic setup](setup.png)
 
 ### Desktop mode
 
@@ -24,129 +30,119 @@ This repository contains the Unity code for the IVA (Interactive Virtual Agent) 
 2. Disable `XR Interaction Setup` gameobject in hierarchy
 3. On the `SceneControls` gameobject, set a working microphone
 
-#### Desktop controls
-
-* M - Toggle microphone
-* WASD - Move
-* Mouse - Look around
-* Space - Jump
-* Left Shift - Sprint
-
 ### VR mode
 
 1. Enable `XR Interaction Setup` gameobject in hierarchy
 2. Disable `WASD Player` gameobject in hierarchy
 3. On the `SceneControls` gameobject, set microphone to `Oculus Virtual Audio Device` (or other device equivalent)
 
-#### VR controls
+### Controls
 
-* A - Toggle microphone
-* Left Stick - Move
-* Right Stick - Look around
-* Side Trigger (Grab) - Interact with objects
+| **Action**            | **VR Mode**     | **Desktop Mode** |
+| --------------------- | ------------------- | -------------------- |
+| Toggle microphone     | A                   | M                    |
+| Move                  | Left Stick          | WASD                 |
+| Look around           | Right Stick         | Mouse                |
+| Sprint                | –                   | Left Shift           |
+| Interact with objects | Side Trigger (Grab) | –                    |
 
-## TODOs
+## Python Setup
 
-- [ ] Features
-  - [ ] Move to Unity 6
-  - [ ] Add support for sentence-by-sentence TTS playback
-  - [ ] Add one-click switching between Desktop and VR modes
+Backend is responsible for handling requests from Unity, processing audio files, and interacting with the LLM server. It is located in the [iva-cui-backend](iva-cui-backend/) directory.
 
-- [ ] Refactor
-  - [ ] Merge `Scene` branch into `main`
-  - [ ] Re-organize RAG and newer backend support into namespaces
-  - [ ] Remove unused assets and (optional) clear them from version history to reduce clone time
+### Setup Steps
 
-## OLDER VERSION BELOW
+The outcome from following these instructions should be:
 
-![ISUE logo](https://avatars.githubusercontent.com/u/10524889?s=200&v=4)
+* A local LLM server running on port 8082
+* A local ASR server running on port 8083
+* A local Python middleware server running on port 8080
 
-We will show you how to easily modify our files to get this system running for your use case!
+#### Running LLM locally on Windows
 
-1. Clone both repositories.
+By default, backend runs using [Ollama](https://ollama.com/download/windows). We recommend using it, however, OpenAI API-style LLM server endpoints and locally-deployed options ([llamafile](https://github.com/Mozilla-Ocho/llamafile/releases) and [LMStudio](https://lmstudio.ai/)) are also supported. LLM API endpoints are specified in [iva-cui-backend/python_middleware/llm_backends.py](iva-cui-backend/python_middleware/llm_backends.py).
 
-    ```sh
-    git clone https://github.com/maslychm/avatar_llm_api
-    ```
+##### Ollama
 
-    ```sh
-    git clone https://github.com/maslychm/avatar_llm_unity
-    ```
+1. Download and install [Ollama](https://ollama.com/download/windows)
+2. Run `ollama run llama3.1:8b-instruct-q5_K_M`
 
-## In Visual Studio Code
+##### LMStudio
 
-1. Open avatar_llm_api folder in Visual Studio Code.
-2. Navigate to "test_all_scenes" folder and duplicate and rename.
-3. In transition_prompts.py file change the prompts as needed and make sure to save
-4. Navigate to "Terminal" tab at the top left and click "New Terminal"
-   ![click terminal](README_images/terminal.png)
-5. Windows with venv
+1. Download, install and run [LMStudio](https://lmstudio.ai/)
+2. Download this model `lmstudio-community/Meta-Llama-3.1-8B-Instruct-GGUF/Meta-Llama-3.1-8B-Instruct-Q5_K_M.gguf`
+3. Set the UI mode to "Developer" or "Power User" (bottom left corner)
+4. Go to "Developer" tab -> Settings -> Server Port and set it to `8082`
+5. Start the server by toggling the switch in the top left corner
 
-    ```sh
-    cd insert_renamed_folder
-    ```
+##### llamafile
 
-    ```sh
-    python -m venv venv
-    ```
+1. Download [llamafile-0.9.0](https://github.com/Mozilla-Ocho/llamafile/releases/tag/0.9.0)
+2. Rename `llamafile-0.9.0` to `llamafile-0.9.0.exe`
+3. Download `Meta-Llama-3.1-8B-Instruct-Q5_K_M.gguf` from [huggingface](https://huggingface.co/bullerwins/Meta-Llama-3.1-8B-Instruct-GGUF/tree/828492ca0d7e7efd4b316e75af8d9cd582fdec34)
+4. Run `llamafile-0.9.0.exe --server -ngl 9999 -m Meta-Llama-3.1-8B-Instruct-Q5_K_M.gguf --host 0.0.0.0 --port 8082`
 
-    ```sh
-    venv\Scripts\activate
-    ```
+#### Running Python middleware on Windows
 
-    ```sh
-    pip install edge-tts openai FastAPI[all] ollama
-    ```
+```bash
+# create and activate virtual environment
+python -m venv venv
+venv\Scripts\activate
 
-    ```sh
-    uvicorn app:app --reload
-    ```
+# install the required packages
+pip install openai ollama edge-tts FastAPI[all]
 
-    ![windows venv](README_images/windows_venv.png)
-    ![windows venv](README_images/windows_venv_2.png)
+# navigate to the directory and run the server
+cd iva-cui-backend\python_middleware
+uvicorn app:app --reload
+```
 
-   Conda (anywhere)
+#### Running the ASR model on WSL
 
-    ```sh
-    # Run on WSL and have a running llamafile with its address
-    ```
+```bash
+# create a virtual environment
+sudo apt update
+sudo apt install python3-venv
+python3 -m venv venv
 
-    ```sh
-    conda create --name ml
-    ```
+# activate the virtual environment
+source venv/bin/activate
 
-    ```sh
-    conda activate ml
-    ```
+# install the required packages
+pip install nvidia-cublas-cu12 nvidia-cudnn-cu12==9.*
 
-    ```sh
-    pip install edge-tts openai ollama
-    ```
+export LD_LIBRARY_PATH=`python3 -c 'import os; import nvidia.cublas.lib; import nvidia.cudnn.lib; print(os.path.dirname(nvidia.cublas.lib.__file__) + ":" + os.path.dirname(nvidia.cudnn.lib.__file__))'`
 
-    ```sh
-    # make sure subprocess command that creates shell has access to above-installed packages
-    # Install FastAPI with uvicorn
-    pip install FastAPI[all] 
-    ```
+pip install faster_whisper FastAPI[all]
 
-    ```sh
-    uvicorn app:app --reload
-    ```
+# navigate to directory and run the ASR server
+cd iva-cui-backend\transcription_server
+python whisper_server.py
+```
 
-> If you see an error, you are in the wrong directory!
->
-## In Unity
+### Test LLM Locally
 
-1. Open Unity Hub.
-2. Click "Add" at the top right.
-   ![click add](README_images/add_file.png)
-3. Locate and click the avatar_llm_unity folder.
-4. Click "Open" (loading the file will take a few seconds).
-5. Click the "Edit" tab at the top left of the window, navigate to and click "Project Settings".
-    ![edit tab](README_images/click_project_settings.png)
-6. Scroll to and click "Whisper" and disable CUDA by unchecking the "Enable CUDA" box.
-    ![disable CUDA](README_images/disable_CUDA.png)
-7. Click the "Projects" tab and navigate to the "Scenes" Folder. Click on the "Prompts test scene" scene and copy, paste, and rename this scene.
-    ![duplicate scene](README_images/duplicate_scene.png)
+```bash
+cd iva-cui-backend\python_middleware
+python test_conv.py
+```
 
-8. Navigate to the play button at the top and middle of the unity window and you are good to test out the scene!
+## Citation
+
+If you use this code in your research, please cite our paper:
+
+```bibtex
+@inproceedings{Maslych2025Mitigating,
+    author    = {Mykola Maslych and Mohammadreza Katebi and Christopher Lee and Yahya Hmaiti and Amirpouya Ghasemaghaei and Christian Pumarada and Janneese Palmer and Esteban Segarra Martinez and Marco Emporio and Warren Snipes and Ryan P. McMahan and Joseph J. LaViola Jr.},
+    title     = {Mitigating Response Delays in Free-Form Conversations with LLM-powered Intelligent Virtual Agents},
+    booktitle = {Proceedings of the 7th ACM Conference on Conversational User Interfaces (CUI ’25)},
+    year      = {2025},
+    month     = jul,
+    pages     = {1--15},
+    publisher = {ACM},
+    address   = {New York, NY, USA},
+    location  = {Waterloo, ON, Canada},
+    doi       = {10.1145/3719160.3736636},
+    url       = {https://doi.org/10.1145/3719160.3736636}
+}
+```
