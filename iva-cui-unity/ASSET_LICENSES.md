@@ -60,4 +60,3 @@ If you use, redistribute, or modify any assets from this list, please ensure com
 | `🛋️ Interior Design Assets` | [My Virtual Desk](https://sketchfab.com/3d-models/my-virtual-desk-cba29f5b32a84113bbabde15f1bd3843)    | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)           |
 | `🤵 Avatars` | [VALID Avatar Library](https://github.com/xrtlab/Validated-Avatar-Library-for-Inclusion-and-Diversity---VALID/) | [MIT License](https://github.com/xrtlab/Validated-Avatar-Library-for-Inclusion-and-Diversity---VALID/blob/main/LICENSE) |
 |`🕺 Avatar Animations` | [Mixamo Animations and Rigging](https://www.mixamo.com/#/) |[Adobe Mixamo License](https://helpx.adobe.com/creative-cloud/faq/mixamo-faq.html) |
-| `🔊 Ambient Audio` | []() | []() |
