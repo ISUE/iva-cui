@@ -157,16 +157,19 @@ If you use this code in your research, please cite our paper:
 
 ```bibtex
 @inproceedings{Maslych2025Mitigating,
-    author    = {Mykola Maslych and Mohammadreza Katebi and Christopher Lee and Yahya Hmaiti and Amirpouya Ghasemaghaei and Christian Pumarada and Janneese Palmer and Esteban Segarra Martinez and Marco Emporio and Warren Snipes and Ryan P. McMahan and Joseph J. LaViola Jr.},
+    author    = {Maslych, Mykola and Katebi, Mohammadreza and Lee, Christopher and Hmaiti, Yahya and Ghasemaghaei, Amirpouya and Pumarada, Christian and Palmer, Janneese and Segarra Martinez, Esteban and Emporio, Marco and Snipes, Warren and McMahan, Ryan P. and LaViola Jr., Joseph J.},
     title     = {Mitigating Response Delays in Free-Form Conversations with LLM-powered Intelligent Virtual Agents},
-    booktitle = {Proceedings of the 7th ACM Conference on Conversational User Interfaces (CUI ’25)},
     year      = {2025},
-    month     = jul,
-    pages     = {1--15},
-    publisher = {ACM},
+    isbn      = {9798400715273},
+    publisher = {Association for Computing Machinery},
     address   = {New York, NY, USA},
-    location  = {Waterloo, ON, Canada},
+    url       = {https://doi.org/10.1145/3719160.3736636},
     doi       = {10.1145/3719160.3736636},
-    url       = {https://doi.org/10.1145/3719160.3736636}
+    booktitle = {Proceedings of the 7th ACM Conference on Conversational User Interfaces},
+    articleno = {49},
+    numpages  = {15},
+    month     = {jul},
+    series    = {CUI '25},
+    location  = {Waterloo, ON, Canada},
 }
 ```
